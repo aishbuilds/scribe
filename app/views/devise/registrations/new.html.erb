@@ -22,7 +22,7 @@
         </div>
       </div>
 
-        <div class="row form-group">
+      <div class="row form-group">
         <%= f.label 'Confirm Password', class: "col-sm-2 control-label" %>
         <div class="col-sm-4">
           <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
@@ -30,7 +30,21 @@
       </div>
 
       <div class="row form-group">
-        <%= f.submit "Sign up", class: "col-xs-2 col-xs-offset-3 btn btn-large btn-primary" %>
+        <div class="col-sm-4 col-sm-offset-2">
+          <label class="radio-inline">
+            <%= f.radio_button :user_type_id, UserType.find_by_name("scribe_volunteer").id %> <strong>Volunteer as a scribe!</strong>
+          </label>
+        </div>
+        <div class="col-sm-4">
+          <label class="radio-inline">
+            <%= f.radio_button :user_type_id, UserType.find_by_name("scribe_requester").id %> <strong>I need a scribe!</strong>
+          </label>
+        </div>
+      </div>
+
+
+      <div class="row form-group">
+        <%= f.submit "Sign me up!", class: "col-xs-2 col-xs-offset-3 btn btn-large btn-primary" %>
       </div>
     <% end %>
 

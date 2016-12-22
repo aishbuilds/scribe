@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
   resources :requests
+
+  resources :user_profile do
+    collection do
+      get 'show'
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -8,6 +14,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     root to: "devise/sessions#new"
   end
+  devise_for :users, :controllers => { :registrations => "registrations" }
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
