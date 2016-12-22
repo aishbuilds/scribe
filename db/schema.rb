@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222201732) do
+ActiveRecord::Schema.define(version: 20161222205301) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "city_user_details", force: :cascade do |t|
+    t.integer  "city_id",        limit: 4
+    t.integer  "user_detail_id", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "city_user_details", ["city_id"], name: "index_city_user_details_on_city_id", using: :btree
+  add_index "city_user_details", ["user_detail_id"], name: "index_city_user_details_on_user_detail_id", using: :btree
 
   create_table "languages", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -33,6 +43,16 @@ ActiveRecord::Schema.define(version: 20161222201732) do
   end
 
   add_index "localities", ["city_id"], name: "index_localities_on_city_id", using: :btree
+
+  create_table "locality_user_details", force: :cascade do |t|
+    t.integer  "locality_id",    limit: 4
+    t.integer  "user_detail_id", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "locality_user_details", ["locality_id"], name: "index_locality_user_details_on_locality_id", using: :btree
+  add_index "locality_user_details", ["user_detail_id"], name: "index_locality_user_details_on_user_detail_id", using: :btree
 
   create_table "requests", force: :cascade do |t|
     t.string   "exam",        limit: 255
