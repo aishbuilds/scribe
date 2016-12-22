@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :requests
   belongs_to :user_type
+  has_one :user_detail
 end

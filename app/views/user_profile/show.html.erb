@@ -15,7 +15,7 @@
       </div>
 
       <div class="col-xs-2">
-        -NA-
+        <%= @user.user_detail.try(:name) ?  @user.user_detail.name : "-NA-" %>
       </div>
     </div>
 
