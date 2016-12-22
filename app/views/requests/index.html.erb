@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="row">
+      <h1> Dashboard </h1>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'pull-right') %>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <span class="panel-title pull-left">Your requests</span>
+        <span><%= button_to "New Request", new_request_path, :class => "btn btn-default pull-right", :method => :get  %></span>
+        <div class="clearfix"></div>
+      </div>
+
+      <table class="table">
+        <tr>
+          <th>Exam</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>City</th>
+          <th>Language</th>
+          <th>Action</th>
+        </tr>
+        <% @requests.each do |request| %>
+            <tr>
+              <td><%= "#{request.exam} - #{request.subject}" %></td>
+              <td><%= request.start_time.strftime("%d-%m-%y (%A)") %></td>
+              <td><%= request.state == 'unverified' ? 'Verification pending' : request.try(:state).try(:upper) %></td>
+              <td><%= request.city.try(:name) %></td>
+              <td><%= request.language.try(:name) %></td>
+              <td><%= button_to "View", request_path(request), :class => "btn btn-default", :method => :get  %></td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+
+  </div>
+</div>

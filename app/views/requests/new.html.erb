@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-3">
+    <%= form_for @request, url: {action: 'create'}, class: "form-horizontal" do |f| %>
+
+        <div class="row"><h2 class="col-xs-4 col-xs-offset-3 center-text">New Request</h2></div>
+
+        <div class="row form-group">
+          <%= f.label 'Exam', class: "col-sm-2 control-label" %>
+          <div class="col-sm-6">
+            <%= f.text_field :exam, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label 'Subject', class: "col-sm-2 control-label" %>
+          <div class="col-sm-6">
+            <%= f.text_field :subject, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label 'City', class: "col-sm-2 control-label" %>
+          <div class="col-sm-6">
+            <%= f.select :city_id, options_for_select(City.all.map{|c| [c.name, c.id]}), {}, { :class => 'form-control' } %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label 'Locality', class: "col-sm-2 control-label" %>
+          <div class="col-sm-6">
+            <%= f.select :locality_id, options_for_select(Locality.all.map{|l| [l.name, l.id]}), {}, { :class => 'form-control' } %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label 'Language', class: "col-sm-2 control-label" %>
+          <div class="col-sm-6">
+            <%= f.select :language_id, options_for_select(Language.all.map{|l| [l.name, l.id]}), {}, { :class => 'form-control' } %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label 'Address', class: "col-sm-2 control-label" %>
+          <div class="col-sm-6">
+            <%= f.text_area :address, class: "form-control", rows: '5'  %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label 'Start time', class: "col-sm-2 control-label" %>
+          <div class="col-sm-6">
+            <%= f.text_field :start_time, class: "form-control datetimepicker" %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label 'End time', class: "col-sm-2 control-label" %>
+          <div class="col-sm-6">
+            <%= f.text_field :end_time, class: "form-control datetimepicker" %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <%= f.label 'Specific Requirements', class: "col-sm-2 control-label" %>
+          <div class="col-sm-6">
+            <%= f.text_area :note, class: "form-control", rows: '5'  %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <%= f.submit "Request", class: "col-xs-2 col-xs-offset-2 btn btn-large btn-primary" %>
+          <%= link_to "Cancel", '/requests', {:class=>"col-xs-2 col-xs-offset-1 btn btn-large btn-primary"} %>
+        </div>
+    <% end %>
+  </div>
+</div>
