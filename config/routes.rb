@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
-  resources :requests
+  resources :requests do
+    collection do
+      get 'request_confirm/:id' => 'requests#request_confirm'
+      post 'confirm'
+    end
+  end
 
   resources :user_profile do
     collection do
       get 'show'
+    end
+  end
+
+  resources :otp do
+    collection do
+      post 'send_otp'
     end
   end
 
