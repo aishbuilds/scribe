@@ -24,7 +24,7 @@
             <tr>
               <td><%= "#{request.exam} - #{request.subject}" %></td>
               <td><%= request.start_time.strftime("%d-%m-%y (%A)") %></td>
-              <td><%= request.state == 'unverified' ? 'Verification pending' : request.try(:state).try(:upper) %></td>
+              <td><%= request.state == 'unverified' ? 'Verification pending' : request.try(:state).try(:capitalize) %></td>
               <td><%= request.city.try(:name) %></td>
               <td><%= request.language.try(:name) %></td>
               <td><%= button_to "View", request_path(request), :class => "btn btn-default", :method => :get  %></td>

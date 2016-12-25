@@ -7,4 +7,8 @@ class UserDetail < ActiveRecord::Base
 
   has_many :locality_user_details
   has_many :localities, through: :locality_user_details
+
+  def self.fetch_users_in_locality(locality)
+    UserDetail.includes(:localities).where(localities: {id: locality.id})
+  end
 end

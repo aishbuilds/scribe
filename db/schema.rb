@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222205301) do
+ActiveRecord::Schema.define(version: 20161222220409) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20161222205301) do
     t.integer  "gender",     limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "phone_no",   limit: 255
   end
 
   add_index "user_details", ["user_id"], name: "index_user_details_on_user_id", using: :btree
