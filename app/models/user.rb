@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
   has_many :requests
   belongs_to :user_type
   has_one :user_detail
-
+  has_one :user_otp
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222220409) do
+ActiveRecord::Schema.define(version: 20161225191747) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -86,6 +86,15 @@ ActiveRecord::Schema.define(version: 20161222220409) do
 
   add_index "user_details", ["user_id"], name: "index_user_details_on_user_id", using: :btree
 
+  create_table "user_otps", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "otp",        limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "user_otps", ["user_id"], name: "index_user_otps_on_user_id", using: :btree
+
   create_table "user_types", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
@@ -118,5 +127,6 @@ ActiveRecord::Schema.define(version: 20161222220409) do
   add_foreign_key "requests", "localities"
   add_foreign_key "requests", "users"
   add_foreign_key "user_details", "users"
+  add_foreign_key "user_otps", "users"
   add_foreign_key "users", "user_types"
 end

@@ -3,25 +3,31 @@
 
       <h2 class="header-thanks"> Thank you for volunteering for <%= @request.user.user_detail.name %>! </h2>
 
-      <div class="row form-group" id="mobile-div">
-        <p class="instruction-text">Please enter your registered mobile number below to confirm:</p>
+      <div class="request-confirmation-div">
+        <div class="row form-group" id="mobile-div">
+          <p class="instruction-text">Please enter your registered mobile number below to confirm:</p>
 
-        <div class="col-sm-4">
-          <input type="text" class="form-control" id="phone_no">
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="phone_no">
+          </div>
+          <div class="col-sm-2">
+            <button type="button" class="btn btn-large btn-primary" onclick="confirmRequest()">Send OTP</button>
+          </div>
         </div>
-        <div class="col-sm-2">
-          <button type="button" class="btn btn-large btn-primary" onclick="confirmRequest()">Send OTP</button>
+
+        <div class="row form-group" id="otp-div">
+          <p class="instruction-text">Enter the OTP sent to your number to confirm:</p>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" id="otp">
+          </div>
+          <div class="col-sm-2">
+            <button type="button" class="btn btn-large btn-primary" onclick="verifyOtp()">Confirm</button>
+          </div>
         </div>
       </div>
 
-      <div class="row form-group" id="otp-div">
-        <p class="instruction-text">Enter the OTP sent to your number to confirm:</p>
-        <div class="col-sm-4">
-          <input type="text" class="form-control" id="otp">
-        </div>
-        <div class="col-sm-2">
-          <button type="button" class="btn btn-large btn-primary" onclick="confirmRequest()">Confirm</button>
-        </div>
+      <div class="message-confirmation-div">
+        <h4 class="header-thanks"> Details will be emailed to you shortly! </h4>
       </div>
 
   </div>

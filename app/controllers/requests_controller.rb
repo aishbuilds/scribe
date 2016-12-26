@@ -1,4 +1,6 @@
 class RequestsController < ApplicationController
+  skip_before_filter :authenticate_user!, :only => [:request_confirm]
+
   def index
     @requests = Request.where(user: current_user)
   end
@@ -32,10 +34,6 @@ class RequestsController < ApplicationController
 
   def request_confirm
     @request = Request.find(params[:id])
-  end
-
-  def confirm
-    byebug
   end
 
   private
