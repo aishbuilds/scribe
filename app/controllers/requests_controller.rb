@@ -42,8 +42,8 @@ class RequestsController < ApplicationController
     if valid_otp
       user = UserDetail.find_by(phone_no: params[:phone_no]).user
       request_volunteer = RequestVolunteer.create(request: @request, user: user)
-      request_volunteer.assign_priority
-      render json: {status: 200, message: "Success"}
+      priority = request_volunteer.assign_priority
+      render json: {status: 200, message: "Success", priority: priority}
     else
       render json: {status: 500, message: message}
     end

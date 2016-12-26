@@ -39,6 +39,14 @@ function verifyOtp(request_id) {
         success:function(data){
             if (data.status == 200){
                 $(".message-confirmation-div").show();
+                if(data.priority == 1){
+                    $("#backup").hide();
+                    $("#confirmed").show();
+                }else{
+                    $("#confirmed").hide();
+                    $("#backup").show();
+                }
+
                 $(".request-confirmation-div").hide();
             }
         },
