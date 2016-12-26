@@ -25,13 +25,14 @@ function confirmRequest() {
     });
 }
 
-function verifyOtp() {
+function verifyOtp(request_id) {
     var phone_no = $("#phone_no").val();
     var otp = $("#otp").val();
-    var data = {phone_no: phone_no, otp: otp};
+    var request_id = $("#request_id").val();
 
+    var data = {phone_no: phone_no, otp: otp, request_id: request_id};
     $.ajax({
-        url:'/otp/verify_otp',
+        url:'/requests/confirm',
         type:'POST',
         dataType:'json',
         data:data,

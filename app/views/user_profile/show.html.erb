@@ -35,7 +35,7 @@
       </div>
 
       <div class="col-xs-2">
-        <%= @user.user_detail.cities.empty? ? "-NA-" : @user.user_detail.cities.map(&:name).join(", ") %>
+        <%= @user.try(:user_detail) && !@user.user_detail.cities.empty? ? @user.user_detail.cities.map(&:name).join(", ") : "-NA-"  %>
       </div>
     </div>
 
@@ -45,7 +45,7 @@
       </div>
 
       <div class="col-xs-2">
-        <%= @user.user_detail.localities.empty? ? "-NA-" : @user.user_detail.localities.map(&:name).join(", ") %>
+        <%= @user.try(:user_detail) && !@user.user_detail.localities.empty? ? @user.user_detail.localities.map(&:name).join(", ") : "-NA-"  %>
       </div>
     </div>
 

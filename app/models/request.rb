@@ -6,6 +6,7 @@ class Request < ActiveRecord::Base
   belongs_to :locality
   belongs_to :language
   after_create :set_status
+  has_many :request_volunteers
 
   def broadcast_requests
     user_details = UserDetail.fetch_users_in_locality(self.locality)

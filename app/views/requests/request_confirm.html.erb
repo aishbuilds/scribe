@@ -2,7 +2,7 @@
   <div class="col-xs-8 col-xs-offset-3">
 
       <h2 class="header-thanks"> Thank you for volunteering for <%= @request.user.user_detail.name %>! </h2>
-
+      <%= hidden_field_tag :request_id, @request.id %>
       <div class="request-confirmation-div">
         <div class="row form-group" id="mobile-div">
           <p class="instruction-text">Please enter your registered mobile number below to confirm:</p>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :requests do
     collection do
       get 'request_confirm/:id' => 'requests#request_confirm'
+      post 'confirm'
     end
   end
 
@@ -14,7 +15,6 @@ Rails.application.routes.draw do
   resources :otp do
     collection do
       post 'send_otp'
-      post 'verify_otp'
     end
   end
 

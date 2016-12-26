@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161225191747) do
+ActiveRecord::Schema.define(version: 20161226191000) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -53,6 +53,17 @@ ActiveRecord::Schema.define(version: 20161225191747) do
 
   add_index "locality_user_details", ["locality_id"], name: "index_locality_user_details_on_locality_id", using: :btree
   add_index "locality_user_details", ["user_detail_id"], name: "index_locality_user_details_on_user_detail_id", using: :btree
+
+  create_table "request_volunteers", force: :cascade do |t|
+    t.integer  "request_id", limit: 4
+    t.integer  "user_id",    limit: 4
+    t.integer  "priority",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "request_volunteers", ["request_id"], name: "index_request_volunteers_on_request_id", using: :btree
+  add_index "request_volunteers", ["user_id"], name: "index_request_volunteers_on_user_id", using: :btree
 
   create_table "requests", force: :cascade do |t|
     t.string   "exam",        limit: 255
@@ -122,6 +133,8 @@ ActiveRecord::Schema.define(version: 20161225191747) do
   add_index "users", ["user_type_id"], name: "index_users_on_user_type_id", using: :btree
 
   add_foreign_key "localities", "cities"
+  add_foreign_key "request_volunteers", "requests"
+  add_foreign_key "request_volunteers", "users"
   add_foreign_key "requests", "cities"
   add_foreign_key "requests", "languages"
   add_foreign_key "requests", "localities"

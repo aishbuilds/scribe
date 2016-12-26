@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:request_confirm]
+  skip_before_filter :authenticate_user!, :only => [:request_confirm, :confirm]
 
   def index
     @requests = Request.where(user: current_user)
@@ -34,6 +34,19 @@ class RequestsController < ApplicationController
 
   def request_confirm
     @request = Request.find(params[:id])
+  end
+
+  def confirm
+    @request = Request.find(params[:request_id])
+    valid_otp, message = Otp.verify_otp(params)
+    if valid_otp
+      user = UserDetail.find_by(phone_no: params[:phone_no]).user
+      request_volunteer = RequestVolunteer.create(request: @request, user: user)
+      request_volunteer.assign_priority
+      render json: {status: 200, message: "Success"}
+    else
+      render json: {status: 500, message: message}
+    end
   end
 
   private
