@@ -43,6 +43,7 @@ class RequestsController < ApplicationController
       user = UserDetail.find_by(phone_no: params[:phone_no]).user
       request_volunteer = RequestVolunteer.create(request: @request, user: user)
       priority = request_volunteer.assign_priority
+      @request.send_confirm_message(request_volunteer)
       render json: {status: 200, message: "Success", priority: priority}
     else
       render json: {status: 500, message: message}

@@ -24,6 +24,16 @@ class Request < ActiveRecord::Base
 
   end
 
+  def send_confirm_message(request_volunteer)
+    if request_volunteer.priority == 1
+      sms_string = "Hi! Thank you for volunteering for #{self.user.user_detail.try(:name)}! We have emailed you the details!"
+    else
+      sms_string = "Hi! Thank you for volunteering for #{self.user.user_detail.try(:name)}! However, someone has already confirmed for this request. Don't worry, We have kept you as the next priority, and will let you know in case the the slot get's freed!"
+    end
+    phone_number = request_volunteer.user.user_detail.phone_no
+    Sms.new(sms_string, phone_number).send
+  end
+
   private
 
   def set_status
