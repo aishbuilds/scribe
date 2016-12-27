@@ -12,8 +12,13 @@
       </li>
 
       <li>
-        <span><label for="q3">Which city do you live in?</label></span>
+        <span><label for="q3">Which City do you live in?</label></span>
         <input id="q3" name="q3" type="text"/>
+      </li>
+
+      <li>
+        <span><label for="q4">Which Locality do you live in?</label></span>
+        <input id="q4" name="q4" type="text"/>
       </li>
     </ol>
     <button class="submit" type="submit">Send answers</button>
@@ -50,31 +55,6 @@
     }
   } );
 
-  var availableTags = [
-    "ActionScript",
-    "AppleScript",
-    "Asp",
-    "BASIC",
-    "C",
-    "C++",
-    "Clojure",
-    "COBOL",
-    "ColdFusion",
-    "Erlang",
-    "Fortran",
-    "Groovy",
-    "Haskell",
-    "Java",
-    "JavaScript",
-    "Lisp",
-    "Perl",
-    "PHP",
-    "Python",
-    "Ruby",
-    "Scala",
-    "Scheme"
-  ];
-  $( "#q3" ).autocomplete({
-    source: availableTags
-  });
+  fetchCities();
+  fetchLocalities();
 </script>

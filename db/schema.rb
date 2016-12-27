@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161226191000) do
+ActiveRecord::Schema.define(version: 20161227191456) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -38,8 +38,9 @@ ActiveRecord::Schema.define(version: 20161226191000) do
   create_table "localities", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.integer  "city_id",    limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "status",     limit: 4,   default: 1
   end
 
   add_index "localities", ["city_id"], name: "index_localities_on_city_id", using: :btree

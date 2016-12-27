@@ -1,4 +1,6 @@
 class Locality < ActiveRecord::Base
+  enum status: [ :active, :inactive ]
+
   belongs_to :city
   has_many :requests
 
