@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :user_profile do
     collection do
       get 'show'
+      get 'edit'
     end
   end
 

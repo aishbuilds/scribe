@@ -21,6 +21,9 @@ module Scribe
       c.exotel_token = '354d27d14f30dade1ed5591276a91b14dd7b8c34'
     end
 
+    config.assets.enabled = true
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de

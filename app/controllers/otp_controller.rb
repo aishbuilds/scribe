@@ -11,6 +11,7 @@ class OtpController < ApplicationController
       UserOtp.create(user: user, otp: otp)
       sms_string = "#{otp} is your OTP for Scribe confirmation."
       #Sms.send_exotel_sms(phone_no, sms_string)
+      res = Sms.new(sms_string, phone_no).send
       render json: {status: 200}
     else
       render json: {status: 500}

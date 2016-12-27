@@ -17,7 +17,7 @@ class Request < ActiveRecord::Base
   def sms_requests(phone_numbers)
     sms_string = "Hi! #{self.user.user_detail.try(:name)} is in need of a scribe on #{self.start_time.to_date} at #{self.address}. Please click on LINK to confirm."
     Sms.new(sms_string, phone_numbers).send
-      #phone_numbers.each{|phone_number| Sms.send_exotel_sms(phone_number, sms_string)}
+    #phone_numbers.each{|phone_number| Sms.send_exotel_sms(phone_number, sms_string)}
   end
 
   def email_requests(users)
@@ -32,6 +32,7 @@ class Request < ActiveRecord::Base
     end
     phone_number = request_volunteer.user.user_detail.phone_no
     Sms.new(sms_string, phone_number).send
+    #Sms.send_exotel_sms(phone_no, sms_string)
   end
 
   private
