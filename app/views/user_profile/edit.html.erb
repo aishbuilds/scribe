@@ -1,38 +1,42 @@
-<form id="theForm" class="simform" autocomplete="off">
-  <div class="simform-inner">
-    <ol class="questions">
-      <li>
-        <span><label for="q1">What's your Name?</label></span>
-        <input id="q1" name="q1" type="text"/>
-      </li>
+<div class="profile-edit-div">
+  <%= hidden_field_tag :user_id, @user.id %>
+  <form id="theForm" class="simform" autocomplete="off">
+    <div class="simform-inner">
+      <ol class="questions">
+        <li>
+          <span><label for="q1">What's your Name?</label></span>
+          <input id="q1" name="q1" type="text"/>
+        </li>
 
-      <li>
-        <span><label for="q2">What's your Mobile number?</label></span>
-        <input id="q2" name="q2" type="text"/>
-      </li>
+        <li>
+          <span><label for="q2">What's your Mobile number?</label></span>
+          <input id="q2" name="q2" type="text"/>
+        </li>
 
-      <li>
-        <span><label for="q3">Which City do you live in?</label></span>
-        <input id="q3" name="q3" type="text"/>
-      </li>
+        <li>
+          <span><label for="q3">Which City do you live in?</label></span>
+          <input id="q3" name="q3" type="text"/>
+        </li>
 
-      <li>
-        <span><label for="q4">Which Locality do you live in?</label></span>
-        <input id="q4" name="q4" type="text"/>
-      </li>
-    </ol>
-    <button class="submit" type="submit">Send answers</button>
-    <div class="controls">
-      <button class="next"></button>
-      <div class="progress"></div>
-							<span class="number">
-								<span class="number-current"></span>
-								<span class="number-total"></span>
-							</span>
-      <span class="error-message"></span>
-    </div><!-- / controls -->
-  </div>
-</form>
+        <li>
+          <span><label for="q4">Which Locality do you live in?</label></span>
+          <input id="q4" name="q4" type="text"/>
+        </li>
+      </ol>
+      <button class="submit" type="submit">Send answers</button>
+      <div class="controls">
+        <button class="next"></button>
+        <div class="progress"></div>
+                <span class="number">
+                  <span class="number-current"></span>
+                  <span class="number-total"></span>
+                </span>
+        <span class="error-message"></span>
+      </div><!-- / controls -->
+    </div>
+    <span class="final-message"></span>
+  </form>
+</div>
 
 <script>
   var theForm = document.getElementById( 'theForm' );
@@ -42,15 +46,11 @@
       // hide form
       classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
 
-      /*
-       form.submit()
-       or
-       AJAX request (maybe show loading indicator while we don't have an answer..)
-       */
+      submitUserDetails();
 
       // let's just simulate something...
       var messageEl = theForm.querySelector( '.final-message' );
-      messageEl.innerHTML = 'Thank you! We\'ll be in touch.';
+      messageEl.innerHTML = 'Thank you! We\'ll get in touch with you soon!';
       classie.addClass( messageEl, 'show' );
     }
   } );
