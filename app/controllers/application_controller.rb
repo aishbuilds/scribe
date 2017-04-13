@@ -7,12 +7,12 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     user_type = resource.user_type.try(:name)
     unless resource.user_detail
-      '/user_profile/edit'
+      "/user_profiles/#{resource.id}/edit"
     else
       if user_type == "scribe_requester"
         '/requests'
       elsif user_type == "scribe_volunteer"
-        '/user_profile/show'
+        '/user_profiles/show'
       else
         '/requests'
       end

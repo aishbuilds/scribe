@@ -6,12 +6,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :user_profile do
-    collection do
-      get 'show'
-      get 'edit'
-    end
-  end
+  resources :user_profiles
 
   resources :otp do
     collection do

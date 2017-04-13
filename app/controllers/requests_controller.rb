@@ -2,6 +2,7 @@ class RequestsController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:request_confirm, :confirm]
 
   def index
+    @user = current_user
     @requests = Request.where(user: current_user)
   end
 
