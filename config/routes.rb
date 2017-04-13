@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :requests do
     collection do
-      get 'request_confirm/:id' => 'requests#request_confirm'
-      post 'confirm'
+      get 'confirm/:id'=> 'requests#confirm'
+      post 'request_confirm'
     end
   end
 

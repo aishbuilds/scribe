@@ -32,7 +32,7 @@ function verifyOtp(request_id) {
 
     var data = {phone_no: phone_no, otp: otp, request_id: request_id};
     $.ajax({
-        url:'/requests/confirm',
+        url:'/requests/request_confirm',
         type:'POST',
         dataType:'json',
         data:data,

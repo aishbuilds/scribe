@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
       if user_type == "scribe_requester"
         '/requests'
       elsif user_type == "scribe_volunteer"
-        '/user_profiles/show'
+        "/user_profiles/#{resource.id}"
       else
         '/requests'
       end

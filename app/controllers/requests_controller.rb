@@ -33,11 +33,11 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
   end
 
-  def request_confirm
+  def confirm
     @request = Request.find(params[:id])
   end
 
-  def confirm
+  def request_confirm
     @request = Request.find(params[:request_id])
     valid_otp, message = Otp.verify_otp(params)
     if valid_otp
